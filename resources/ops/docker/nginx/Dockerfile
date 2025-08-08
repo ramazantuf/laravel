@@ -1,4 +1,4 @@
-FROM nginx:1.19-alpine AS nginx
+FROM nginx:1.28-alpine AS nginx
 
 WORKDIR /var/www/html
 
