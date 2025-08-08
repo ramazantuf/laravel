@@ -16,6 +16,8 @@ spec:
         - name: mariadb
           image: mariadb:10
           env:
+            - name: MYSQL_RANDOM_ROOT_PASSWORD
+              value: "true"
             - name: MYSQL_USER
               value: laravel
             - name: MYSQL_PASSWORD
