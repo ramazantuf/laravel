@@ -19,5 +19,6 @@ spec:
                     name: laravel
               command: ["php"]
               args:
+                - "artisan"
                 - "schedule:run"
           restartPolicy: OnFailure
