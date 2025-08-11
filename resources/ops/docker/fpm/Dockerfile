@@ -1,4 +1,4 @@
-FROM php:7.4-fpm-alpine AS base
+FROM php:8.3-fpm-alpine AS base
 
 RUN apk add --update zlib-dev libpng-dev libzip-dev $PHPIZE_DEPS
 
@@ -21,13 +21,17 @@ COPY /artisan artisan
 FROM base AS build-fpm
 
 WORKDIR /var/www/html
-
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 COPY /artisan artisan
 
 COPY /composer.json composer.json
-
-RUN composer install --prefer-dist --no-ansi --no-dev --no-autoloader
+COPY /bootstrap bootstrap
+COPY /app app
+COPY /config config
+COPY /routes routes
+COPY . /var/www/html
+RUN composer dump-autoload -o
+RUN composer install --prefer-dist --no-ansi --no-dev 
 
 COPY /bootstrap bootstrap
 COPY /app app
