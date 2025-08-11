@@ -15,7 +15,7 @@ spec:
       containers:
         - name: laravel-k8s-example-nginx
           imagePullPolicy: Never
-          image: laravel-k8s-example-nginx:latest
+          image: ghcr.io/ramazantuf/laravel-k8s-example-nginx:latest
           resources:
             limits:
               cpu: 500m
@@ -24,7 +24,7 @@ spec:
             - containerPort: 80
         - name: laravel-k8s-example-fpm
           imagePullPolicy: Never
-          image: laravel-k8s-example-fpm:latest
+          image: ghcr.io/ramazantuf/laravel-k8s-example-fpm:latest
           resources:
             limits:
               cpu: 500m
