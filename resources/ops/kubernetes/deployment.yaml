@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: laravel-example-project
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: laravel-example-project
+  template:
+    metadata:
+      labels:
+        app: laravel-example-project
+    spec:
+      containers:
+        - name: laravel-k8s-example-nginx
+          imagePullPolicy: Never
+          image: laravel-k8s-example-nginx:latest
+          resources:
+            limits:
+              cpu: 500m
+              memory: 500M
+          ports:
+            - containerPort: 80
+        - name: laravel-k8s-example-fpm
+          imagePullPolicy: Never
+          image: laravel-k8s-example-fpm:latest
+          resources:
+            limits:
+              cpu: 500m
+              memory: 500M
+          ports:
+            - containerPort: 9000
