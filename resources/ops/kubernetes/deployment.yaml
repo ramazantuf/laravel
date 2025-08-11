@@ -29,6 +29,9 @@ spec:
             - containerPort: 80
         - name: laravel-k8s-example-fpm
           imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+              name: laravel
           securityContext:
             runAsUser: 82
             readOnlyRootFilesystem: true
