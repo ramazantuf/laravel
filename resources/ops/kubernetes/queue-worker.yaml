@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: queue-worker
 spec:
-  replicas: 1
+  replicas: 5
   selector:
     matchLabels:
       app: queue-worker
@@ -55,8 +55,10 @@ spec:
               mountPath: /var/www/html/storage/framework/testing
           image: ghcr.io/ramazantuf/laravel-k8s-example-fpm:latest
           resources:
+            requests:
+              cpu: 4000m
             limits:
-              cpu: 500m
+              cpu: 4000m
               memory: 500M
           ports:
             - containerPort: 9000

@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: laravel-example-project
 spec:
-  replicas: 1
+  replicas: 5
   selector:
     matchLabels:
       app: laravel-example-project
