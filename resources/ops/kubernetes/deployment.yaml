@@ -28,6 +28,7 @@ spec:
       initContainers:
         - name: database-migrations
           image: ghcr.io/ramazantuf/laravel-k8s-example-fpm:latest
+          imagePullPolicy: Always
           command: ["php"]
           args:
             - "artisan"
