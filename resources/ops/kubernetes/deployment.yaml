@@ -14,7 +14,7 @@ spec:
     spec:
       volumes:
         - name: logs
-          emptyDirs: {}
+          emptyDir: {}
       containers:
         - name: laravel-k8s-example-nginx
           imagePullPolicy: Always
