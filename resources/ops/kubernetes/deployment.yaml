@@ -29,7 +29,7 @@ spec:
           imagePullPolicy: Always
           securityContext:
             runAsUser: 82
-            readOnlyRootFilesystem: "true"
+            readOnlyRootFilesystem: true
             fsGroup: 82
           volumeMounts:
             - name: logs
