@@ -12,6 +12,9 @@ spec:
       labels:
         app: laravel-example-project
     spec:
+      volumes:
+        - name: logs
+          emptyDirs: {}
       containers:
         - name: laravel-k8s-example-nginx
           imagePullPolicy: Never
@@ -24,6 +27,9 @@ spec:
             - containerPort: 80
         - name: laravel-k8s-example-fpm
           imagePullPolicy: Never
+          volumeMounts:
+            - name: logs
+              mountPath: /var/www/html/storage/logs
           image: ghcr.io/ramazantuf/laravel-k8s-example-fpm:latest
           resources:
             limits:
