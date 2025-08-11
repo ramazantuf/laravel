@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: queue-worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: queue-worker
+  template:
+    metadata:
+      labels:
+        app: queue-worker
+    spec:
+      volumes:
+        - name: logs
+          emptyDir: {}
+        - name: cache
+          emptyDir: {}
+        - name: sessions
+          emptyDir: {}
+        - name: views
+          emptyDir: {}
+        - name: testing
+          emptyDir: {}
+      securityContext:
+        fsGroup: 82
+      containers:
+        - name: fpm
+          imagePullPolicy: Always
+          command:
+            - php
+          args:
+            - artisan
+            - queue:work
+            - --queue=default
+          envFrom:
+            - configMapRef:
+                name: laravel
+            - secretRef:
+                name: laravel
+          securityContext:
+            runAsUser: 82
+            readOnlyRootFilesystem: true
+          volumeMounts:
+            - name: logs
+              mountPath: /var/www/html/storage/logs
+            - name: cache
+              mountPath: /var/www/html/storage/framework/cache
+            - name: sessions
+              mountPath: /var/www/html/storage/framework/sessions
+            - name: views
+              mountPath: /var/www/html/storage/framework/views
+            - name: testing
+              mountPath: /var/www/html/storage/framework/testing
+          image: ghcr.io/ramazantuf/laravel-k8s-example-fpm:latest
+          resources:
+            limits:
+              cpu: 500m
+              memory: 500M
+          ports:
+            - containerPort: 9000
