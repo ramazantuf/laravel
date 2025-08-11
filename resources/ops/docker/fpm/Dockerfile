@@ -1,7 +1,7 @@
 FROM php:8.3-fpm-alpine AS base
 
 RUN apk add --update zlib-dev libpng-dev libzip-dev $PHPIZE_DEPS
-
+LABEL org.opencontainers.image.source https://github.com/ramazantuf/laravel
 RUN docker-php-ext-install exif
 RUN docker-php-ext-install gd
 RUN docker-php-ext-install zip
