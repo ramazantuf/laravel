@@ -27,7 +27,7 @@ spec:
         fsGroup: 82
       initContainers:
         - name: database-migrations
-          image: ghcr.io/ramazantuf/laravel-k8s-example-fpm:latest
+          image: ghcr.io/ramazantuf/laravel-k8s-fpm:latest
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
@@ -40,16 +40,16 @@ spec:
             - "migrate"
             - "--force"
       containers:
-        - name: laravel-k8s-example-nginx
+        - name: laravel-k8s-nginx
           imagePullPolicy: Always
-          image: ghcr.io/ramazantuf/laravel-k8s-example-nginx:latest
+          image: ghcr.io/ramazantuf/laravel-k8s-nginx:latest
           resources:
             limits:
               cpu: 500m
               memory: 500M
           ports:
             - containerPort: 80
-        - name: laravel-k8s-example-fpm
+        - name: laravel-k8s-fpm
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
