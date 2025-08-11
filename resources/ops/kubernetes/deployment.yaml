@@ -29,6 +29,11 @@ spec:
         - name: database-migrations
           image: ghcr.io/ramazantuf/laravel-k8s-example-fpm:latest
           imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: laravel
+            - secretRef:
+                name: laravel
           command: ["php"]
           args:
             - "artisan"
