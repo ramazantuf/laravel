@@ -17,6 +17,12 @@ spec:
           emptyDir: {}
         - name: cache
           emptyDir: {}
+        - name: sessions
+          emptyDir: {}
+        - name: views
+          emptyDir: {}
+        - name: testing
+          emptyDir: {}
       securityContext:
         fsGroup: 82
       containers:
@@ -41,7 +47,13 @@ spec:
             - name: logs
               mountPath: /var/www/html/storage/logs
             - name: cache
-              mountPath: /var/www/html/storage/framework
+              mountPath: /var/www/html/storage/framework/cache
+            - name: sessions
+              mountPath: /var/www/html/storage/framework/sessions
+            - name: views
+              mountPath: /var/www/html/storage/framework/views
+            - name: testing
+              mountPath: /var/www/html/storage/framework/testing
           image: ghcr.io/ramazantuf/laravel-k8s-example-fpm:latest
           resources:
             limits:
