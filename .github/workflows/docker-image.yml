@@ -19,5 +19,6 @@ jobs:
     - name: Build the Docker image Fpm
       run: |
         docker build . --file resources/ops/docker/fpm/Dockerfile --tag ghcr.io/ramazantuf/laravel-k8s-example-fpm:latest
+        docker login --username ramazantuf --password ${{ secrets.GH_PAT }} ghcr.io
         docker push ghcr.io/ramazantuf/laravel-k8s-example-nginx:latest
         docker push ghcr.io/ramazantuf/laravel-k8s-example-fpm:latest
