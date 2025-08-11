@@ -30,7 +30,6 @@ COPY /app app
 COPY /config config
 COPY /routes routes
 COPY . /var/www/html
-RUN composer dump-autoload -o
 RUN composer install --prefer-dist --no-ansi --no-dev 
 
 COPY /bootstrap bootstrap
