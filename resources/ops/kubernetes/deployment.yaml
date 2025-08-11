@@ -40,6 +40,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: laravel
+            - secretRef:
+                name: laravel
           securityContext:
             runAsUser: 82
             readOnlyRootFilesystem: true
