@@ -27,6 +27,8 @@ spec:
             - containerPort: 80
         - name: laravel-k8s-example-fpm
           imagePullPolicy: Always
+          securityContext:
+            runAsUser: 82
           volumeMounts:
             - name: logs
               mountPath: /var/www/html/storage/logs
