@@ -6,7 +6,7 @@ data:
   APP_NAME: Laravel
   APP_ENV: local
   APP_KEY: base64:Ice2VLwIrGImqE1m8w3fBv3q8VNg4d//jQZW0fPXzM8=
-  APP_DEBUG: true
+  APP_DEBUG: "true"
   APP_URL: http://localhost
 
   LOG_CHANNEL: stack
