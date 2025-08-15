@@ -25,6 +25,7 @@ jobs:
 
       - name: Deploy using Helm
         run: |
+          kubectl get pod
           helm upgrade --install myapp ./chart/myapp \
             --namespace mynamespace \
             --create-namespace \
