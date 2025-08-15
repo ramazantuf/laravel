@@ -29,5 +29,5 @@ jobs:
           helm upgrade --install myapp ./chart/myapp \
             --namespace mynamespace \
             --create-namespace \
-            --set image.repository=ghcr.io/ramazantuf/ \
+            --set image.repository=ghcr.io/ramazantuf/laravel-k8s-nginx \
             --set image.tag=${GITHUB_SHA::8}
