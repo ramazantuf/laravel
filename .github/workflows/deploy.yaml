@@ -25,7 +25,7 @@ jobs:
 
       - name: Deploy using Helm
         run: |
-          kubectl get pod --kubeconfig $HOME/.kube/config
+          kubectl get pod --kubeconfig $HOME/.kube/config --insecure-skip-tls-verify
           
 
       - name: Log in to GHCR
