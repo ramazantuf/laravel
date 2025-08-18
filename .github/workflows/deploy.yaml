@@ -17,6 +17,7 @@ jobs:
       - name: Set up Kubeconfig
         run: |
           mkdir -p $HOME/.kube
+          echo "fytgvyuı"
           echo "${{ secrets.KUBE_CONFIG }}" > $HOME/.kube/config
           kubectl get pod --kubeconfig $HOME/.kube/config --insecure-skip-tls-verify=false
       - name: Set up Helm
